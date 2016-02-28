@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 // Karma configuration
 // Generated on Sun Jan 31 2016 06:13:26 GMT+0530 (IST)
 
