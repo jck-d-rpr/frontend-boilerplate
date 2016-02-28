@@ -1,0 +1,10 @@
+#Boilerplate Code:
+- React
+- webpack
+- karma
+- jasmine
+- es6/es7
+- bootstrap
+- jquery
+- babel
+- eslint
