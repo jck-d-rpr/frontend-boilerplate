@@ -1,22 +1,28 @@
 import React from 'react';
+import $ from 'jquery';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { text: 'Hello' };
   }
 
-  static defaultProps = {
-
-  };
-
-  static propTypes = {
-
-  };
+  componentWillMount() {
+    $(document.body).on('click', () => {
+      this.setState({ text: 'Goodbye' });
+    });
+  }
 
   render() {
     return (
-      <div>Hello World</div>
+      <div className='container'>
+        <div className='jumbotron'>
+          <h1>{`${this.state.text} World!!`}</h1>
+          <p>
+            Lorem ipsum dolor sit amet
+          </p>
+        </div>
+      </div>
     );
   }
 }

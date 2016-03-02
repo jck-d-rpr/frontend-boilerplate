@@ -1,10 +1,9 @@
-/* eslint-disable no-var */
 // Karma configuration
-// Generated on Sun Jan 31 2016 06:13:26 GMT+0530 (IST)
-
+// Generated on Wed Mar 02 2016 23:29:21 GMT+0530 (IST)
+/* eslint-disable no-var */
 var webpack = require('karma-webpack');
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -13,12 +12,11 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: [ 'jasmine' ],
 
 
     // list of files / patterns to load in the browser
     files: [
-      './node_modules/phantomjs-polyfill/bind-polyfill.js',
       'spec/**/*.spec.js'
     ],
 
@@ -27,20 +25,24 @@ module.exports = function(config) {
     exclude: [
     ],
 
-    plugins: [webpack, 'karma-jasmine', 'karma-phantomjs-launcher', 'karma-coverage', 'karma-spec-reporter'],
+    // plugins to use
+    plugins: [ webpack, 'karma-jasmine', 'karma-phantomjs-launcher', 'karma-coverage', 'karma-spec-reporter' ],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'spec/**/*.spec.js': ['webpack'],
-      'src/**/*.js': ['webpack', 'coverage']
+      'spec/**/*.spec.js': [ 'webpack' ],
+      'src/**/*.js': [ 'webpack', 'coverage' ],
+      'src/**/*.jsx': [ 'webpack', 'coverage' ]
     },
+
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec', 'coverage', 'progress'],
+    reporters: [ 'spec', 'coverage', 'progress' ],
 
+    // coverage reporter configuration
     coverageReporter: {
       dir: 'build/reports/coverage',
       reporters: [
@@ -50,20 +52,27 @@ module.exports = function(config) {
       ]
     },
 
+    // webpack configuration
+    // jsx-es6 to plain old es5
     webpack: {
+      resolve: {
+        extensions: [ '', '.js', '.jsx' ]
+      },
       module: {
-        loaders: [{
+        loaders: [ {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader'
-        }],
-        postLoaders: [{
+        } ],
+        postLoaders: [ {
           test: /\.jsx?$/,
           exclude: /(node_modules|spec)/,
           loader: 'istanbul-instrumenter'
-        }]
+        } ]
       }
     },
+
+    // webpack middleware settings
     webpackMiddleware: { noInfo: true },
 
     // web server port
@@ -85,7 +94,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: [ 'PhantomJS' ],
 
 
     // Continuous Integration mode
