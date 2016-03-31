@@ -44,6 +44,14 @@ module.exports = {
   ],
   module: {
     loaders: [
+      {
+        test: /jquery\.js$/,
+        loader: 'expose?$'
+      },
+      {
+        test: /jquery\.js$/,
+        loader: 'expose?jQuery'
+      },
       // **IMPORTANT** This is needed so that each bootstrap js file required by
       // bootstrap-webpack has access to the jQuery object
       {
