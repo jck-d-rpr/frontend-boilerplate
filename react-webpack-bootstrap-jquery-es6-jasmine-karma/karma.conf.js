@@ -2,6 +2,7 @@
 // Generated on Wed Mar 02 2016 23:29:21 GMT+0530 (IST)
 /* eslint-disable no-var */
 var webpack = require('karma-webpack');
+var path = require('path');
 
 module.exports = function (config) {
   config.set({
@@ -17,6 +18,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
+      './node_modules/phantomjs-polyfill/bind-polyfill.js',
       'spec/**/*.spec.js'
     ],
 
@@ -26,14 +28,21 @@ module.exports = function (config) {
     ],
 
     // plugins to use
-    plugins: [ webpack, 'karma-jasmine', 'karma-phantomjs-launcher', 'karma-coverage', 'karma-spec-reporter' ],
+    plugins: [
+      webpack,
+      'karma-jasmine',
+      'karma-phantomjs-launcher',
+      'karma-coverage',
+      'karma-spec-reporter',
+      'karma-sourcemap-loader'
+    ],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'spec/**/*.spec.js': [ 'webpack' ],
-      'src/**/*.js': [ 'webpack', 'coverage' ],
-      'src/**/*.jsx': [ 'webpack', 'coverage' ]
+      'spec/**/*.spec.js': [ 'webpack', 'sourcemap' ],
+      'src/**/*.js': [ 'webpack', 'coverage', 'sourcemap' ],
+      'src/**/*.jsx': [ 'webpack', 'coverage', 'sourcemap' ]
     },
 
 
@@ -46,31 +55,41 @@ module.exports = function (config) {
     coverageReporter: {
       dir: 'build/reports/coverage',
       reporters: [
+        { type: 'text' },
         { type: 'html', subdir: 'report-html' },
         { type: 'lcov', subdir: 'report-lcov' },
         { type: 'cobertura', subdir: '.', file: 'cobertura.txt' }
       ]
     },
 
-    // webpack configuration
-    // jsx-es6 to plain old es5
     webpack: {
-      resolve: {
-        extensions: [ '', '.js', '.jsx' ]
-      },
+       // just do inline source maps instead of the default
+      devtool: 'inline-source-map',
       module: {
-        loaders: [ {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader'
-        } ],
-        postLoaders: [ {
-          test: /\.jsx?$/,
-          exclude: /(node_modules|spec)/,
-          loader: 'istanbul-instrumenter'
-        } ]
+        preLoaders: [
+          {
+            test: /\.jsx?$/,
+            exclude: [ /node_modules/, /\.spec\.js/ ],
+            loader: 'isparta-instrumenter-loader'
+          }
+        ],
+        loaders: [
+          {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader'
+          },
+          // css etc required to run bootstrap
+          {
+            test: /\.css$/,
+            loader: 'style-loader!css-loader',
+            include: path.join(__dirname, 'src')
+          }
+        ]
       }
     },
+    // webpack configuration
+    // jsx-es6 to plain old es5
 
     // webpack middleware settings
     webpackMiddleware: { noInfo: true },
