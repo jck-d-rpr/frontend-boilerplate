@@ -44,6 +44,7 @@ SidebarItem.propTypes = {
 const Sidebar = props => (
   <Drawer open={props.open}>
     <AppBar />
+    <SidebarItem icon={<MdPersonOutline />} link={ROUTE_PATHS.DEFAULT} name={'Dashboard'} />
     <SidebarItem icon={<MdPersonOutline />} link={ROUTE_PATHS.ABOUT} name={'About'} />
   </Drawer>
 );

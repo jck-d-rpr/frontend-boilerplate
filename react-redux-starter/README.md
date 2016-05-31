@@ -1,4 +1,6 @@
-#Starter Kit for Building Applications in React and Redux in ES6.
+# Starter Kit for Building Applications in React and Redux in ES6.
+(This is a slightly modified version of [this starter kit]
+(https://github.com/coryhouse/pluralsight-redux-starter))
 
 ## Get Started
 1. **Install [Node 6](https://nodejs.org)**. Need to run multiple versions of Node?
@@ -19,9 +21,13 @@ and [Redux Dev Tools](https://chrome.google.com/webstore/detail/redux-devtools/l
 |----------|-------|
 |babel-polyfill | Polyfill for Babel features that cannot be transpiled |
 |bootstrap|CSS Framework|
+|immutable|Immutable persistant data structures in js|
 |jquery|Only used to support toastr|
+|material-ui|Who hates material design|
 |react|React library |
+|react-addons-pure-render-mixin|improving shouldComponentUpdate (**Will remove it**)|
 |react-dom|React library for DOM rendering |
+|react-icons|The biggest icons library|
 |react-redux|Redux library for connecting React components to Redux |
 |react-router|React library for routing |
 |react-router-redux|Keep React Router in sync with Redux application state|
@@ -34,11 +40,13 @@ and [Redux Dev Tools](https://chrome.google.com/webstore/detail/redux-devtools/l
 |----------|-------|
 |babel-cli|Babel Command line interface |
 |babel-core|Babel Core for transpiling the new JavaScript to old |
+|babel-eslint|es6 linting helper for eslint|
 |babel-loader|Adds Babel support to Webpack |
 |babel-plugin-react-display-name| Add displayName to React.createClass calls |
 |babel-preset-es2015|Babel preset for ES2015|
 |babel-preset-react| Add JSX support to Babel |
 |babel-preset-react-hmre|Hot reloading preset for Babel|
+|babel-preset-stage-0|es2015 is old|
 |babel-register|Register Babel to transpile our Mocha tests|
 |cheerio|Supports querying DOM with jQuery like syntax - Useful in testing and build process for HTML manipulation|
 |colors|Adds color support to terminal |
