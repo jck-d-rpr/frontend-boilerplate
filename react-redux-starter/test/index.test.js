@@ -1,7 +1,5 @@
-import expect from 'expect';
+import test from 'ava';
 
-describe('Our first test', () => {
-  it('should pass', () => {
-    expect(true).toEqual(true);
-  });
+test('foo', t => {
+  t.pass();
 });

@@ -3,16 +3,72 @@
   "version": "1.0.0",
   "description": "Starter kit for React and Redux",
   "scripts": {
-    "prestart": "babel-node tools/startMessage.js",
-    "start": "npm-run-all --parallel test:watch open:src lint:watch",
-    "open:src": "babel-node tools/srcServer.js",
+    "prestart": "babel-node tools/start-message.js",
+    "start": "npm-run-all --parallel open:src lint:watch",
+    "open:src": "babel-node tools/src-server.js",
+    "test": "ava",
+    "test:cover": "nyc ava",
+    "test:watch": "npm run test -- --watch",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
-    "lint:watch": "npm run lint -- --watch",
-    "test": "mocha --reporter progress tools/testSetup.js \"test/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch"
+    "lint:watch": "npm run lint -- --watch"
   },
   "author": "Sherub Thakur",
   "license": "MIT",
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ],
+    "env": {
+      "development": {
+        "sourceMaps": "inline"
+      },
+      "production": {
+        "only": [
+          "app"
+        ],
+        "plugins": [
+          "transform-react-remove-prop-types",
+          "transform-react-constant-elements",
+          "transform-react-inline-elements"
+        ]
+      }
+    }
+  },
+  "ava": {
+    "verbose": true,
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "source": [
+      "src/**/*.{js,jsx}",
+      "!dist/**/*",
+      "!coverage/**/*"
+    ],
+    "match": [],
+    "concurrency": 5,
+    "failFast": true,
+    "tap": true,
+    "require": [
+      "./tools/test-helpers.js"
+    ],
+    "babel": "inherit"
+  },
+  "nyc": {
+    "extension": [
+      ".jsx",
+      ".js"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
+    ]
+  },
   "dependencies": {
     "babel-polyfill": "^6.8.0",
     "bootstrap": "^3.3.6",
@@ -28,10 +84,10 @@
     "react-router-redux": "^4.0.4",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.2",
-    "redux-thunk": "^2.0.1",
-    "toastr": "^2.1.2"
+    "redux-thunk": "^2.0.1"
   },
   "devDependencies": {
+    "ava": "^0.15.2",
     "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",
     "babel-eslint": "^6.0.4",
@@ -41,25 +97,21 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
-    "babel-register": "^6.8.0",
-    "colors": "^1.1.2",
-    "compression": "^1.6.1",
+    "babel-register": "^6.9.0",
     "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
-    "enzyme": "^2.2.0",
+    "enzyme": "^2.3.0",
     "eslint": "^2.9.0",
     "eslint-plugin-import": "^1.6.1",
     "eslint-plugin-react": "^5.0.1",
     "eslint-watch": "^2.1.11",
     "eventsource-polyfill": "^0.9.6",
-    "expect": "^1.19.0",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
-    "jsdom": "^8.5.0",
-    "mocha": "^2.4.5",
-    "nock": "^8.0.0",
+    "jsdom": "^9.2.1",
     "npm-run-all": "^1.8.0",
+    "nyc": "^6.4.4",
     "open": "^0.0.5",
     "react-addons-test-utils": "^15.0.2",
     "redux-immutable-state-invariant": "^1.2.3",
