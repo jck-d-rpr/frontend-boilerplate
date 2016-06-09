@@ -5,9 +5,9 @@
   "scripts": {
     "analyse": "./node_modules/.bin/webpack --config tools/webpack.config.dev.babel.js --profile --json >> bundle-stats.json",
     "clean": "./node_modules/.bin/rimraf bundle-stats.json npm-debug.log static/ .github/ .nyc_output/ coverage/ static/",
-    "lint": "node_modules/.bin/esw webpack.config.* src tools",
+    "dev": "babel-node tools/src-server.js",
+    "lint": "node_modules/.bin/esw --config tools/lint-config.js webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
-    "open:src": "babel-node tools/src-server.js",
     "prestart": "babel-node tools/start-message.js",
     "start": "npm-run-all --parallel open:src lint:watch",
     "test": "ava",
@@ -30,9 +30,6 @@
         "sourceMaps": "inline"
       },
       "production": {
-        "only": [
-          "app"
-        ],
         "plugins": [
           "transform-react-remove-prop-types",
           "transform-react-constant-elements",
@@ -44,12 +41,13 @@
   "ava": {
     "verbose": true,
     "files": [
-      "test/**/*.test.js"
+      "src/**/*.test.js"
     ],
     "source": [
       "src/**/*.{js,jsx}",
       "!dist/**/*",
-      "!coverage/**/*"
+      "!coverage/**/*",
+      "!src/**/*.test.js"
     ],
     "match": [],
     "concurrency": 5,
@@ -61,6 +59,9 @@
     "babel": "inherit"
   },
   "nyc": {
+    "exclude": [
+      "src/**/*.test.js"
+    ],
     "extension": [
       ".jsx",
       ".js"
@@ -86,6 +87,7 @@
     "react-router-redux": "^4.0.4",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.5.2",
+    "redux-form": "^5.2.5",
     "redux-thunk": "^2.0.1"
   },
   "devDependencies": {

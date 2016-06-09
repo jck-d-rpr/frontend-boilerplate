@@ -2,7 +2,7 @@ import test from 'ava';
 import React from 'react';
 import { render } from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import Footer from '../../../src/Components/Base/Footer';
+import Footer from '../Components/Footer';
 
 test('Footer Component has a single footer tag', t => {
   const div = document.createElement('div');

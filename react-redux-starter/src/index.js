@@ -6,8 +6,8 @@ import Router from 'react-router/lib/Router';
 import browserHistory from 'react-router/lib/browserHistory';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import Routes from './Components/Routes';
-import configureStore from './store/configureStore';
+import Routes from './Routes';
+import configureStore from './configureStore';
 // Directly importing the minified bootstrap css to avoid all the painful
 // steps it will take otherwise to get it to work.
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';

@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import Main from './Base/Main';
-import { ROUTE_PATHS } from '../constants';
+import { ROUTE_PATHS } from './constants';
+
 
 // Error msg
 const errorLoading = err => { console.error('Dynamic page loading failed', err); };

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'react-router/lib/Link';
 
-import { ROUTE_PATHS } from '../../constants';
+import { ROUTE_PATHS } from '../constants';
 
 const dummy = () => (
   <div>

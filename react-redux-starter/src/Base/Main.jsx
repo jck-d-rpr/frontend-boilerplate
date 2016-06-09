@@ -4,10 +4,10 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import MyRawTheme from './theme';
-import Topbar from './Topbar';
-import Sidebar from './Sidebar';
-import Footer from './Footer';
-import { toggleDrawer } from '../../actions/baseActions';
+import Topbar from './Components/Topbar';
+import Sidebar from './Components/Sidebar';
+import Footer from './Components/Footer';
+import { toggleDrawer } from './Actions/baseActions';
 
 const NAVBAR_HEIGHT = 64;
 
