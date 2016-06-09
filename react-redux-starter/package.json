@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "description": "Starter kit for React and Redux",
   "scripts": {
+    "analyse": "./node_modules/.bin/webpack --config tools/webpack.config.dev.babel.js --profile --json >> bundle-stats.json",
+    "clean": "./node_modules/.bin/rimraf bundle-stats.json npm-debug.log static/ .github/ .nyc_output/ coverage/ static/",
+    "lint": "node_modules/.bin/esw webpack.config.* src tools",
+    "lint:watch": "npm run lint -- --watch",
+    "open:src": "babel-node tools/src-server.js",
     "prestart": "babel-node tools/start-message.js",
     "start": "npm-run-all --parallel open:src lint:watch",
-    "open:src": "babel-node tools/src-server.js",
     "test": "ava",
     "test:cover": "nyc ava",
-    "test:watch": "npm run test -- --watch",
-    "lint": "node_modules/.bin/esw webpack.config.* src tools",
-    "lint:watch": "npm run lint -- --watch"
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Sherub Thakur",
   "license": "MIT",

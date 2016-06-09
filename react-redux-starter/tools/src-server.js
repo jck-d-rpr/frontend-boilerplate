@@ -2,7 +2,7 @@
 import webpack from 'webpack';
 import express from 'express';
 import path from 'path';
-import config from '../webpack.config.dev';
+import config from './webpack.config.dev.babel';
 import open from 'open';
 
 const port = 3000;
@@ -29,7 +29,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
   // webpack-dev-middleware options
   // Display no info to console (only warnings and errors) default: false
-  noInfo: true,
+  noInfo: false,
   // Display nothing to the console, default: false
   quiet: false,
   // lazy model, default: false
@@ -46,8 +46,12 @@ app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath,
   // Output options for the stats
   stats: {
+    // display the chunk information on the screen (super unhelpful)
+    chunks: false,
     // colorful output to the console.
-    colors: true
+    colors: true,
+    // reasons why any chunk was included
+    reasons: false
   }
 }));
 
