@@ -145,8 +145,6 @@ module.exports = {
     'no-implied-eval': 2,
     // disallow usage of __iterator__ property
     'no-iterator': 2,
-    // disallow use of labeled statements
-    'no-labels': 2,
     // disallow unnecessary nested blocks
     'no-lone-blocks': 2,
     // disallow creation of functions within loops
@@ -243,7 +241,7 @@ module.exports = {
     // These rules are purely matters of style and are quite subjective.
     //
     // this option sets a specific tab width for your code (off by default)
-    indent: [ 1, 2, { "SwitchCase": 1 } ],
+    indent: [ 1, 2, { SwitchCase: 1 } ],
     // enforce one true brace style (off by default)
     'brace-style': 0,
     // require camel case names
