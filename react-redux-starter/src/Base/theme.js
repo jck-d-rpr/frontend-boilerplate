@@ -1,3 +1,5 @@
+/* @flow */
+
 import {
   blue500, cyan700,
   grey100, grey300, grey400, grey500,

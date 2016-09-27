@@ -1,3 +1,5 @@
+/* @flow */
+
 import React, { PropTypes } from 'react';
 import Link from 'react-router/lib/Link';
 
@@ -11,13 +13,19 @@ import MdPersonOutline from 'react-icons/lib/md/person-outline';
 
 import { ROUTE_PATHS } from '../../constants';
 
+type SidebarItemPropTypes = {
+  link: string,
+  name: string,
+  icon: React.Element<*>
+}
+
 /**
  * The render info of a single item in the sidebar.
  *
  * @param  {object} props The passed down props (link, name, and an icon to display)
- * @return {StatelessFunctionalReactComponent} Render info of a single sidebar-item
+ * @return {React.Element<*>} Render info of a single sidebar-item
  */
-const SidebarItem = props => (
+const SidebarItem = (props: SidebarItemPropTypes) => (
   <Link to={props.link}>
     <MenuItem primaryText={props.name}
       leftIcon={props.icon}
@@ -35,13 +43,18 @@ SidebarItem.propTypes = {
   icon: PropTypes.object.isRequired
 };
 
+
+type SidebarPropTypes = {
+  open: boolean
+};
+
 /**
  * The render info of the entire sidebar.(pity it's called Drawer. What were you thinking material-ui guyes??)
  *
  * @param  {object} props The props (just a boolean controlling presence/absence of the sidebar)
  * @return {StatelessFunctionalReactComponent} The sidebar ('nuff said)
  */
-const Sidebar = props => (
+const Sidebar = (props: SidebarPropTypes) => (
   <Drawer open={props.open}>
     <AppBar />
     <SidebarItem icon={<MdPersonOutline />} link={ROUTE_PATHS.DEFAULT} name={'Dashboard'} />

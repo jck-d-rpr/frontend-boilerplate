@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react';
 import Link from 'react-router/lib/Link';
 
@@ -16,7 +18,7 @@ const FOOTER_BASE_STYLES = {
 
 /**
  * An about message eith a link to the about page
- * @return {StatelessFunctionalReactComponent} The markup information about about.
+ * @return {React.Element<*>} The markup information about about.
  */
 const About = () => (
   <div style={{ flex: 2, margin: 10 }}>
@@ -31,7 +33,7 @@ const About = () => (
 
 /**
  * For now showing a hardcoded quote (but this will become a placeholder for a random quote)
- * @return {StatelessFunctionalReactComponent} The markup information about the awesome quote
+ * @return {React.Element<*>} The markup information about the awesome quote
  */
 const QuoteBlock = () => (
   <div style={{ flex: 4, textAlign: 'center' }}>
@@ -44,7 +46,7 @@ const QuoteBlock = () => (
 
 /**
  * Branding and other crappy stuff
- * @return {StatelessFunctionalReactComponent} The markup information about the bottm line for footer
+ * @return {React.Element<*>} The markup information about the bottm line for footer
  */
 const BottomLine = () => (
   <div style={{
@@ -70,7 +72,7 @@ const BottomLine = () => (
  * The super awesome footer Component It is divided into Topline showing about, Contribute and quote
  * Component followed by a Component displaying Branding and other crappy stuff
  *
- * @return {StatelessFunctionalReactComponent} The markup information about the footer
+ * @return {React.Element<*>} The markup information about the footer
  */
 const Footer = () => (
   <footer>

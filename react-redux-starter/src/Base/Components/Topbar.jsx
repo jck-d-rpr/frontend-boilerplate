@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 // react rotuer Link Component (used to link to the homepage)
 import Link from 'react-router/lib/Link';
 // the Topbar and the icon button it contains
@@ -6,13 +6,17 @@ import AppBar from 'material-ui/AppBar';
 
 import { ROUTE_PATHS } from '../../constants';
 
+type TopbarPropsType = {
+  toggleDrawer: Function
+};
+
 /**
  * The Topbar.
  *
  * @param  {object} props Only to pass to the child (IconButton controlling sidebar's states)
  * @return {StatelessFunctionalReactComponent} The Topbar
  */
-const Topbar = (props) => (
+const Topbar = (props: TopbarPropsType) => (
   <header >
     <AppBar
       iconClassNameRight='muidocs-icon-navigation-expand-more'
@@ -22,9 +26,5 @@ const Topbar = (props) => (
     />
   </header>
 );
-
-Topbar.propTypes = {
-  toggleDrawer: PropTypes.func.isRequired
-};
 
 export default Topbar;

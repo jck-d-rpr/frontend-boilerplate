@@ -40,3 +40,6 @@ pids
 
 # Github issue
 .github/
+
+# external eslint config
+.eslintrc.js

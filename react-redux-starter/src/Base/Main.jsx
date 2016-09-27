@@ -7,7 +7,7 @@ import MyRawTheme from './theme';
 import Topbar from './Components/Topbar';
 import Sidebar from './Components/Sidebar';
 import Footer from './Components/Footer';
-import { toggleDrawer } from './Actions/baseActions';
+import { toggleDrawer } from './actions';
 
 const NAVBAR_HEIGHT = 64;
 

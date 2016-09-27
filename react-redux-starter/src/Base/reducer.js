@@ -1,4 +1,8 @@
-import { ACTIONS } from '../../constants';
+/* @flow */
+/* eslint-disable space-infix-ops */
+
+import type { ActionType, ModelType } from './types';
+import { TOGGLE_DRAWER, BASE_STATE } from './types';
 
 
 /**
@@ -9,9 +13,9 @@ import { ACTIONS } from '../../constants';
  * as that is required in the switch case as to resolve what kind of an action it is)
  * @return {object} A new state with action applied to it
  */
-const baseReducer = (state = { openDrawer: false }, action) => {
+const baseReducer = (state: ModelType = BASE_STATE, action: ActionType): ModelType => {
   switch (action.type) {
-    case ACTIONS.TOGGLE_DRAWER: {
+    case TOGGLE_DRAWER: {
       return { openDrawer: !state.openDrawer };
     }
     default: {
