@@ -26,7 +26,7 @@ ReactDOM.render(
       <Router history={browserHistory} >
         { Routes }
       </Router>
-      <DevTools />
+      { !window.devToolsExtension ? <DevTools /> : null }
     </div>
   </Provider>,
   document.getElementById('app')
